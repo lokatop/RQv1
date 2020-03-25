@@ -8,6 +8,6 @@ import moxy.viewstate.strategy.StateStrategyType;
 public interface BaseView extends MvpView {
     //void showRefresh();
     //void hideRefresh();
-    //void showError();
+    void showError();
 
 }

@@ -8,15 +8,23 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
 
 import fun.iardo.rqv1.R;
 import fun.iardo.rqv1.common.PresenterFragment;
+import fun.iardo.rqv1.common.Refreshable;
+import fun.iardo.rqv1.data.model.TaskModel;
 import moxy.presenter.InjectPresenter;
 import moxy.presenter.ProvidePresenter;
 
-public class TasksFragment extends PresenterFragment implements TasksView {
+public class TasksFragment extends PresenterFragment implements TasksView,TaskAdapter.OnItemClickListener, Refreshable {
     private View mErrorView;
     private TextView tv_tasks;
+    private RecyclerView mRecyclerView;
+    private TaskAdapter mTaskAdapter;
 
     @InjectPresenter
     TasksPresenter mPresenter;
@@ -42,13 +50,47 @@ public class TasksFragment extends PresenterFragment implements TasksView {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        tv_tasks = view.findViewById(R.id.text_tasks);
+        //tv_tasks = view.findViewById(R.id.text_tasks);
+        mRecyclerView = view.findViewById(R.id.recyclerTasks);
+        mErrorView = view.findViewById(R.id.errorView);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        tv_tasks.setText("C задачами фрагмент");
+        //tv_tasks.setText("C задачами фрагмент");
+
+        mTaskAdapter = new TaskAdapter(this);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mRecyclerView.setAdapter(mTaskAdapter);
+
+        onRefreshData();
     }
 
+    @Override
+    public void showError() {
+
+    }
+
+    @Override
+    public void onRefreshData() {
+        mPresenter.getTasks();
+    }
+
+    @Override
+    public void onItemClick(String username) {
+
+    }
+
+    @Override
+    public void showTasks(List<TaskModel> tasks) {
+        mErrorView.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+        mTaskAdapter.addData(tasks, true);
+    }
+
+    @Override
+    public void openTaskFragment(int idTask) {
+
+    }
 }

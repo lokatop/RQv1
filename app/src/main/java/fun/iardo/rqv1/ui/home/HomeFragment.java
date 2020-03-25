@@ -45,16 +45,19 @@ public class HomeFragment extends PresenterFragment implements HomeView{
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        tv_home = view.findViewById(R.id.text_home);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        tv_home.setText("новый фрагмент");
     }
 
     @Override
     public void showData() {
+    }
+
+    @Override
+    public void showError() {
+
     }
 }

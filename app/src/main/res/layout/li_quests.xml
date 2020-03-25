@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="20sp"
+        android:text="sdgfhdsfh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:textSize="16sp"
+        android:text="sdgfhdsfh1234"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_name"
+        android:layout_alignStart="@id/tv_name"
+        android:layout_below="@id/tv_name" />
+
+    <TextView
+        android:id="@+id/tv_tasks"
+        android:textSize="16sp"
+        android:text="sdgfhdsfhd55555"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_description"
+        android:layout_alignStart="@id/tv_description"
+        android:layout_below="@id/tv_description" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_tasks"
+        android:layout_marginTop="8dp"
+        android:background="@color/colorPrimary" />
+
+</RelativeLayout>
